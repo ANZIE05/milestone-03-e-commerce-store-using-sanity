@@ -8,10 +8,16 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      extend: {
+        screens: {
+          xs: '360px', // Custom breakpoint for 360px screens
+        },
+    
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+    },
     },
   },
   plugins: [],

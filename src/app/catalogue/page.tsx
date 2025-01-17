@@ -17,19 +17,25 @@ interface Product {
 export default function CataloguePage() {
   const [data, setData] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null); // Add error state
 
   // Fetch data on the client side
   useEffect(() => {
     const fetchData = async () => {
-      const fetchedData: Product[] = await client.fetch(`*[_type == "post"] {
-        ProductName,
-        ProductPrice,
-        ProductDescription,
-        "imageUrl": ProductImage.asset->url,
-        _id
-      }`);
-      setData(fetchedData);
-      setLoading(false);
+      try {
+        const fetchedData: Product[] = await client.fetch(`*[_type == "post"] {
+          ProductName,
+          ProductPrice,
+          ProductDescription,
+          "imageUrl": ProductImage.asset->url,
+          _id
+        }`);
+        setData(fetchedData);
+        setLoading(false);
+      } catch (err: any) {
+        setError("Failed to fetch products. Please try again later.");
+        setLoading(false);
+      }
     };
 
     fetchData();
@@ -37,6 +43,10 @@ export default function CataloguePage() {
 
   if (loading) {
     return <p className="text-center mt-10">Loading...</p>;
+  }
+
+  if (error) {
+    return <p className="text-center mt-10 text-red-500">{error}</p>;
   }
 
   // Return the UI with the fetched data

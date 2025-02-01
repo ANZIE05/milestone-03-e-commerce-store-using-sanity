@@ -44,12 +44,11 @@ const BestSellersPage = () => {
         <span className="text-2xl font-bold text-gray-900 dark:text-white">
           Rs.834
         </span>
-        <a
-          href="#"
-          className="text-white bg-pink-500 hover:bg-gray-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        <p
+          className="text-pink-500 text-base pr-4 font-semibold"
         >
-          Add to cart
-        </a>
+          3.3k sold
+        </p>
       </div>
     </div>
   </div>
@@ -90,12 +89,11 @@ const BestSellersPage = () => {
         <span className="text-2xl font-bold text-gray-900 dark:text-white">
           Rs.1230
         </span>
-        <a
-          href="#"
-          className="text-white bg-pink-500 hover:bg-gray-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        <p
+          className="text-pink-500 text-base pr-4 font-semibold"
         >
-          Add to cart
-        </a>
+          684 sold
+        </p>
       </div>
     </div>
   </div>
@@ -136,12 +134,11 @@ const BestSellersPage = () => {
         <span className="text-2xl font-bold text-gray-900 dark:text-white">
         Rs.550
         </span>
-        <a
-          href="#"
-          className="text-white bg-pink-500 hover:bg-gray-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        <p
+          className="text-pink-500 text-base pr-4 font-semibold"
         >
-          Add to cart
-        </a>
+          3.5k sold
+        </p>
       </div>
     </div>
   </div>
@@ -182,12 +179,11 @@ const BestSellersPage = () => {
         <span className="text-2xl font-bold text-gray-900 dark:text-white">
         Rs.1460
         </span>
-        <a
-          href="#"
-          className="text-white bg-pink-500 hover:bg-gray-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        <p
+          className="text-pink-500 text-base pr-4 font-semibold"
         >
-          Add to cart
-        </a>
+          1.2k sold
+        </p>
       </div>
     </div>
   </div>

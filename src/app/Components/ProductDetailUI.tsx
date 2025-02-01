@@ -10,6 +10,7 @@ interface Product {
   ProductPrice: string;
   ProductDescription: string;
   imageUrl: string;
+  slug: string;
   _id: string;
 }
 
@@ -21,7 +22,7 @@ export default function ProductDetailUI({ product }: { product: Product }) {
       <div className="flex flex-col lg:flex-row gap-8 items-center">
         <div className="w-full lg:w-1/2 flex justify-center">
           <Image
-            src={product.imageUrl || "/placeholder-image.jpg"}
+            src={product.imageUrl } //|| "/images/products.png"
             alt={product.ProductName || "Product image"}
             width={400}
             height={400}
@@ -33,7 +34,7 @@ export default function ProductDetailUI({ product }: { product: Product }) {
             {product.ProductName}
           </h1>
           <p className="text-xl text-pink-500 font-semibold mt-4">
-            {product.ProductPrice}
+            Rs.{product.ProductPrice}
           </p>
           <p className="text-gray-600 text-sm md:text-base mt-4 leading-relaxed">
             {product.ProductDescription}
@@ -49,9 +50,9 @@ export default function ProductDetailUI({ product }: { product: Product }) {
             >
               Add to Cart
             </button>
-            <button className="border border-pink-500 text-pink-500 py-2 px-4 rounded hover:bg-gray-200">
+            {/* <button className="border border-pink-500 text-pink-500 py-2 px-4 rounded hover:bg-gray-200">
               Proceed Checkout
-            </button>
+            </button> */}
           </div>
         </div>
       </div>

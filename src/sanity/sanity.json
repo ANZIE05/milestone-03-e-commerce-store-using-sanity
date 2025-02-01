@@ -1,0 +1,14 @@
+{
+    "project": {
+      "name": "",
+      "dataset": "production",
+      "api": {
+        "projectId": "pxlgbdw9",
+        "dataset": "production"
+      }
+    },
+    "hostname": "studio.sanity.studio",
+    "plugins": [],
+    "theme": "default"
+  }
+  

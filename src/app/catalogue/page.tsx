@@ -12,14 +12,16 @@ interface Product {
   ProductPrice: string;
   ProductDescription: string;
   imageUrl: string;
+  slug: string;
 }
 
 export default function CataloguePage() {
   const [data, setData] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null); // Add error state
+  const [error, setError] = useState<string | null>(null); 
 
   // Fetch data on the client side
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -27,9 +29,11 @@ export default function CataloguePage() {
           ProductName,
           ProductPrice,
           ProductDescription,
+          "slug": slug.current,
           "imageUrl": ProductImage.asset->url,
           _id
         }`);
+        console.log("Data fetched: ", fetchedData);
         setData(fetchedData);
         setLoading(false);
       } catch (err: any) {
@@ -56,6 +60,7 @@ export default function CataloguePage() {
 // Client Component for UI and interactivity
 function CatalogueUI({ products }: { products: Product[] }) {
   return (
+
     <div className="flex flex-col items-center mt-10 px-4">
       <h1 className="text-center text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-pink-500">
         New Arrivals
@@ -64,11 +69,11 @@ function CatalogueUI({ products }: { products: Product[] }) {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6 w-full px-8 py-6 lg:py-8">
         {products.map((item) => (
           <div
-            key={item._id}
+           
             className="h-full border rounded-lg shadow-lg overflow-hidden p-5 flex flex-col items-center bg-gray-100 border-gray-200"
           >
             <Image
-              src={item.imageUrl || "/placeholder-image.jpg"}
+              src={item.imageUrl || "/placeholder-images.png"}
               alt={item.ProductName || "Product image"}
               width={250}
               height={250}
@@ -84,7 +89,7 @@ function CatalogueUI({ products }: { products: Product[] }) {
               {item.ProductDescription || "Description not available."}
             </p>
             <div className="mt-auto">
-              <Link href={`/product/${item._id}`}>
+              <Link href={`/product/${item.slug}`} key={item._id}>
                 <button className="bg-pink-500 text-white py-2 px-4 rounded hover:bg-gray-500">
                   View Details
                 </button>

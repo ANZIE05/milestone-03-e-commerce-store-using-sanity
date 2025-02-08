@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { FaSearch, FaHeart, FaShoppingCart } from 'react-icons/fa';
-import { useCart } from '../context/CartContext';
+import { getCartItems } from '../actions/actions';
 import React, { useState, useEffect } from "react";
 import { client } from "@/sanity/lib/client";
 
@@ -12,10 +12,13 @@ interface Product {
   ProductDescription: string;
   ProductPrice: string;
   slug: string;
+  inventory: number;
+  imageUrl: string;
 };
 
 function Navbar2() {
-  const { cartCount } = useCart();
+  const cartItems = getCartItems();
+  const cartCount = cartItems.length;
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [products, setProducts] = useState<Product[]>([]);
@@ -27,6 +30,7 @@ function Navbar2() {
         ProductName,
         ProductPrice,
         ProductDescription,
+        inventory,
         "slug": slug.current,
         "imageUrl": ProductImage.asset->url,
         _id }`);
@@ -62,6 +66,7 @@ function Navbar2() {
   };
 
   return (
+
     <div className="bg-gray-300 p-2">
       <div className="flex justify-between items-center">
         <div className="flex items-center space-x-4 w-full justify-end">

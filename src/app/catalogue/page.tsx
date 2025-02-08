@@ -11,6 +11,7 @@ interface Product {
   ProductName: string;
   ProductPrice: string;
   ProductDescription: string;
+  inventory: number;
   imageUrl: string;
   slug: string;
 }
@@ -28,6 +29,7 @@ export default function CataloguePage() {
           ProductName,
           ProductPrice,
           ProductDescription,
+          inventory,
           "slug": slug.current,
           "imageUrl": ProductImage.asset->url,
           _id

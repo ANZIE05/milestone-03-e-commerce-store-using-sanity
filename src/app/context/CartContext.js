@@ -1,54 +1,30 @@
 "use client";
 
-import React, { createContext, useState, useContext } from "react";
+import { createContext, useContext, useState } from "react";
 
-// Create the context
-const CartContext = createContext();
+// Context create karein
+const CartContext = createContext(null);
 
-// Define the provider component
+// CartProvider ka function
 export const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState([]); // Initialize cart as an empty array
-  const [cartCount, setCartCount] = useState(0); // Track cart count
+  const [cart, setCart] = useState([]);
 
-  // Add a product to the cart
+  // Add to Cart function
   const addToCart = (product) => {
     setCart((prevCart) => [...prevCart, product]);
-    setCartCount((prevCount) => prevCount + 1); // Update cart count
   };
 
-  // Remove a product from the cart by its ID
+  // Remove from Cart function (optional)
   const removeFromCart = (productId) => {
-    setCart((prevCart) => prevCart.filter((item) => item._id !== productId));
-    setCartCount((prevCount) => Math.max(prevCount - 1, 0)); // Decrement cart count safely
+    setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
   };
 
-  // Clear the entire cart
-  const clearCart = () => {
-    setCart([]);
-    setCartCount(0); // Reset cart count
-  };
-
-  // Provide context values
   return (
-    <CartContext.Provider
-      value={{
-        cart,
-        cartCount,
-        addToCart,
-        removeFromCart,
-        clearCart,
-      }}
-    >
+    <CartContext.Provider value={{ cart, addToCart, removeFromCart }}>
       {children}
     </CartContext.Provider>
   );
 };
 
-// Custom hook to use the cart context
-export const useCart = () => {
-  const context = useContext(CartContext);
-  if (!context) {
-    throw new Error("useCart must be used within a CartProvider");
-  }
-  return context;
-};
+// Custom hook to use CartContext
+export const useCart = () => useContext(CartContext);

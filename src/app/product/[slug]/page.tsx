@@ -9,6 +9,7 @@ interface Product {
   imageUrl: string;
   _id: string;
   slug: string;
+  inventory: number;
 }
 
 const fetchProduct = async (slug: string): Promise<Product | null> => {
@@ -16,6 +17,7 @@ const fetchProduct = async (slug: string): Promise<Product | null> => {
     ProductName,
     ProductPrice,
     ProductDescription,
+    inventory,
     "slug": slug.current,
     "imageUrl": ProductImage.asset->url,
     _id
@@ -32,6 +34,7 @@ const fetchProduct = async (slug: string): Promise<Product | null> => {
 };
 
 export default async function ProductPage({ params }: { params: { slug: string } }) {
+  console.log("Fetching Product for Slug:", params.slug); 
   const { slug } = params;
   const product = await fetchProduct(slug);
 

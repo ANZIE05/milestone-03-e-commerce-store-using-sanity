@@ -21,6 +21,11 @@ export const productPage = defineType({
       type: 'string',
     }),
     defineField({
+      name: 'inventory',
+      title: 'Inventory',
+      type: 'number',
+    }),
+    defineField({
       name: 'ProductImage',
       title: 'Product Image',
       type: 'image',
